@@ -254,8 +254,8 @@ td {
     object-fit: cover;
     padding: 2rem;
     margin: 2rem;
-    background: rgb(245, 79, 58);
-    background: linear-gradient(90deg, rgba(245, 79, 58, 1) 0%, rgba(237, 253, 29, 1) 47%, rgba(252, 99, 69, 1) 100%);
+    background: rgb(226, 223, 160);
+    background: linear-gradient(90deg, rgba(226, 223, 160, 1) 0%, rgba(223, 222, 176, 1) 52%, rgba(226, 223, 160, 1) 100%);
     border-radius: 2rem;
     box-shadow: rgba(0, 0, 0, 0.541) 20px 19px 38px, rgba(0, 0, 0, 0.856) 20px 15px 12px;
 }
@@ -266,8 +266,8 @@ td {
     text-align: center;
     padding: 2rem;
     margin: 2rem;
-    background: rgb(245, 79, 58);
-    background: linear-gradient(90deg, rgba(245, 79, 58, 1) 0%, rgba(237, 253, 29, 1) 47%, rgba(252, 99, 69, 1) 100%);
+    background: rgb(226, 223, 160);
+    background: linear-gradient(90deg, rgba(226, 223, 160, 1) 0%, rgba(223, 222, 176, 1) 52%, rgba(226, 223, 160, 1) 100%);
     border-radius: 2rem;
     box-shadow: rgba(0, 0, 0, 0.541) 20px 19px 38px, rgba(0, 0, 0, 0.856) 20px 15px 12px;
 }

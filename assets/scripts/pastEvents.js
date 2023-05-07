@@ -1,4 +1,4 @@
-let divGeneral = document.getElementById('cardContainer')
+let divGeneralPe = document.getElementById('cardContainerPe')
 
 function plantillaCard(obj){
     return `<div class="card mt-3 mb-3" style="width: 18rem;">
@@ -20,4 +20,10 @@ function printCard(list, lugarImpresion){
     lugarImpresion.innerHTML = template
 }
 
-printCard(data.events, divGeneral)
+function filterDataPast(evento){
+    return evento.date < data.currentDate
+}
+
+const pastEvents = data.events.filter(filterDataPast);
+
+printCard(pastEvents, divGeneralPe)
