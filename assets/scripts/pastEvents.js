@@ -6,7 +6,7 @@ function plantillaCard(obj){
             <div class="card-body">
             <h5 class="card-title">${obj.name}</h5>
             <p class="cardp card-text">${obj.description}</p>
-            <h6>Price 5USD</h6>
+            <h6>Price: ${obj.price}<</h6>
             <a href="./pages/details.html" class="btn btn-primary btn2">See More...</a>
             </div>
             </div> `
@@ -24,6 +24,6 @@ function filterDataPast(evento){
     return evento.date < data.currentDate
 }
 
-const pastEvents = data.events.filter(filterDataPast);
+const pastEvents = data.events.filter((filterDataPast));
 
 printCard(pastEvents, divGeneralPe)
