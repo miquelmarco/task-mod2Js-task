@@ -50,8 +50,7 @@ footer {
     border-radius: 1rem;
     font-weight: bolder;
     font-size: 4rem;
-    background: rgb(213, 129, 26);
-    background: linear-gradient(90deg, rgba(213, 129, 26, 1) 11%, rgba(245, 207, 13, 1) 50%, rgba(213, 129, 26, 1) 89%);
+    background-color: rgba(212, 186, 36, 0.534);
 }
 
 .hometitle:hover {

@@ -7,7 +7,7 @@ function plantillaCard(obj){
             <h5 class="card-title">${obj.name}</h5>
             <p class="cardp card-text">${obj.description}</p>
             <h6>Price: ${obj.price}<</h6>
-            <a href="./pages/details.html" class="btn btn-primary btn2">See More...</a>
+            <a href="../pages/details.html" class="btn btn-primary btn2">See More...</a>
             </div>
             </div> `
 }
