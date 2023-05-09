@@ -10,6 +10,7 @@
 body {
     background: rgb(226, 223, 160);
     background: linear-gradient(90deg, rgba(226, 223, 160, 1) 0%, rgba(223, 222, 176, 1) 52%, rgba(226, 223, 160, 1) 100%);
+    /* scroll-behavior: smooth; */
 }
 
 header {
@@ -152,9 +153,18 @@ h6 {
 
 .card-body p {
     font-size: 1.1rem !important;
-    color: crimson !important;
+    color: rgb(241, 235, 236) !important;
     text-align: center;
     font-weight: 1000;
+    text-shadow: 2px 2px 2px black;
+}
+
+.btnSearch {
+    color: rgb(255, 255, 255) !important;
+}
+
+.btnSearch:hover {
+    transform: scale(1.2) !important;
 }
 
 .btn2:hover {
@@ -366,101 +376,102 @@ td {
     }
 }
 
-    @media only screen and (min-width:425px) and (max-width:990px) {
-        #logo {
-            margin-top: 10px;
-        }
-
-        .navbar {
-            margin: 10px;
-        }
-
-        .homeupcoming {
-            font-size: 1.5rem !important;
-        }
-
-        .navbar {
-            width: 60%;
-        }
-
-        .inputcontact {
-            width: 20rem;
-        }
-
-        textarea {
-            width: 18rem;
-            height: 10rem;
-            resize: none;
-        }
-
-        .carousel-item {
-            height: 6vh;
-        }
-
-        .mainform {
-            background: none !important;
-        }
-
-        fieldset {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hometitle {
-            font-size: xx-large;
-        }
-
-        .imgstat {
-            width: 20rem;
-            height: 20rem;
-        }
-
-        .txtstat {
-            width: 20rem;
-            height: 20rem;
-        }
-
-        .statcontainer {
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        .detailcontainer {
-            flex-direction: column;
-            margin-top: 2rem !important;
-            margin-bottom: 2rem !important;
-        }
-    
-        .imgdetail {
-            width: 20rem;
-            height: 20rem;
-        }
-    
-        .txtdetail {
-            width: 20rem;
-            height: 24rem;
-        }
+@media only screen and (min-width:425px) and (max-width:990px) {
+    #logo {
+        margin-top: 10px;
     }
 
-    @media only screen and (min-width:990px) {
-        .mainnav {
-            flex-direction: row !important;
-            justify-content: space-between !important;
-        }
-
-        .mainform {
-            flex-direction: row !important;
-            justify-content: space-around !important;
-            margin: 1rem;
-        }
-        
-    
-        .imgdetail {
-            width: 29rem;
-            height: 29rem;
-        }
-    
-        .txtdetail {
-            width: 29rem;
-            height: 29rem;
-        }
+    .navbar {
+        margin: 10px;
     }
+
+    .homeupcoming {
+        font-size: 1.5rem !important;
+    }
+
+    .navbar {
+        width: 60%;
+    }
+
+    .inputcontact {
+        width: 20rem;
+    }
+
+    textarea {
+        width: 18rem;
+        height: 10rem;
+        resize: none;
+    }
+
+    .carousel-item {
+        height: 6vh;
+    }
+
+    .mainform {
+        background: none !important;
+    }
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hometitle {
+        font-size: xx-large;
+    }
+
+    .imgstat {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .txtstat {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .statcontainer {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .detailcontainer {
+        flex-direction: column;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .imgdetail {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .txtdetail {
+        width: 20rem;
+        height: 24rem;
+    }
+}
+
+@media only screen and (min-width:990px) {
+    .mainnav {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+    }
+
+    .mainform {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        margin: 1rem;
+    }
+
+
+    .imgdetail {
+        width: 29rem;
+        height: 29rem;
+    }
+
+    .txtdetail {
+        width: 29rem;
+        height: 29rem;
+    }
+}
