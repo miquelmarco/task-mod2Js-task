@@ -58,28 +58,22 @@ printCheckbox(newArrayFiltrado, checkboxContainer)
 
 // // hacer filtros para checkbox e imput search
 
-// // Filtro search
+// // eventos de filtrado
 
 inputBusqueda.addEventListener('input', () => {
-    // let busquedaFiltrada = filtrarSearch(datos, inputBusqueda.value)
-    // printCard(busquedaFiltrada, divGeneral)
     filtroDoble()
 })
+
+checkboxContainer.addEventListener('change', () => {
+    filtroDoble()
+})
+
+// // funciones de filtrado
 
 function filtrarSearch(array, input) {
     let filtroSearch = array.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
     return filtroSearch
 }
-
-// // filtro inputs checkbox
-
-checkboxContainer.addEventListener('change', () => {
-    let checkeados = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(item => item.value)
-    // let inputs = filtrarInput(datos, checkeados)
-    filtroDoble()
-    // printCard (inputs, divGeneral)
-
-})
 
 function filtrarInput (eventos, category){
     if(category.length == 0){

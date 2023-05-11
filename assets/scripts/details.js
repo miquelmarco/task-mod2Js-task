@@ -17,9 +17,9 @@ detailContainer.innerHTML = `<div>
                                 </div>
                                 <div class="txtdetail d-flex justify-content-center align-items-center flex-column">
                                 <h5 class="mb-5">${buscarIdOfEvent.name}</h5>
-                                <p><span class="text-secondary">${buscarIdOfEvent.description}</span></p>
-                                <p><span class="text-secondary">Date:</span> ${buscarIdOfEvent.date}</p>
-                                <p><span class="text-secondary">Place:</span> ${buscarIdOfEvent.place}</p>
-                                <p><span class="text-secondary">Max</span> capacity: ${buscarIdOfEvent.capacity}</p>
-                                <p><span class="text-secondary">Entry Price </span> ${buscarIdOfEvent.price} USD</p>
+                                <p><span class="text-success">${buscarIdOfEvent.description}</span></p>
+                                <p><span class="text-success">Date:</span> ${buscarIdOfEvent.date}</p>
+                                <p><span class="text-success">Place:</span> ${buscarIdOfEvent.place}</p>
+                                <p><span class="text-success">Max</span> capacity: ${buscarIdOfEvent.capacity}</p>
+                                <p><span class="text-success">Entry Price </span> ${buscarIdOfEvent.price} USD</p>
                             </div>`
