@@ -18,6 +18,9 @@ function plantillaCard(obj) {
 
 function printCard(list, lugarImpresion) {
     let template = ''
+    if(list == 0){
+        template = `Without results, not your lucky day!`
+    }
     for (let info of list) {
         template += plantillaCard(info)
     }
