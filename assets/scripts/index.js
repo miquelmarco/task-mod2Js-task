@@ -1,41 +1,47 @@
 
 let divGeneral = document.getElementById('cardContainer')
+let datos = data.events
 
-function plantillaCard(obj){
+
+
+function plantillaCard(obj) {
     return `<div class="card mt-3 mb-3" style="width: 18rem;">
-            <img src=${obj.image} class="card-img-top p-4" alt="food fair">
-            <div class="card-body">
-            <h5 class="card-title">${obj.name}</h5>
-            <p class="cardp card-text">${obj.description}</p>
-            <h6>Price: ${obj.price}</h6>
-            <a href="./pages/details.html" class="btn btn-primary btn2">See More...</a>
-            </div>
-            </div> `
+    <img src=${obj.image} class="card-img-top p-4" alt="food fair">
+    <div class="card-body">
+    <h5 class="card-title">${obj.name}</h5>
+    <p class="cardp card-text">${obj.description}</p>
+    <h6>Price: ${obj.price}</h6>
+    <a href="./pages/details.html?_id=${obj._id}" class="btn btn-primary btn2">See More...</a>
+    </div>
+    </div> `
 }
 
-function printCard(list, lugarImpresion){
+function printCard(list, lugarImpresion) {
     let template = ''
-    for(let info of list){
+    for (let info of list) {
         template += plantillaCard(info)
     }
     lugarImpresion.innerHTML = template
 }
 
-printCard(data.events, divGeneral)
+printCard(datos, divGeneral)
 
-// task 3
+// // task 3
 
-let checkboxContainer = document.querySelector(`#checkContainer`)
-let datos = data.events
+// // Poner checkbox dinámicos filtrando duplicados
 
-function plantillaCheckbox(obj){
-    return `<div class="d-flex justify-content-center align-items-center">
-    <input class="ms-1" type="checkbox" id=${obj.category} value="museum">
-    <label for="${obj.category}">${obj.category}</label>
-</div>`
+let checkboxContainer = document.querySelector(`#checkboxContainer`)
+let inputBusqueda = document.querySelector(`#inputBusqueda`)
+// console.log(imputBusqueda)
+// console.log(checkboxContainer)
+function plantillaCheckbox(check) {
+    return `<div id='checkboxUnit' class="d-flex justify-content-center align-items-center">
+                <input class="ms-1" type="checkbox" id='${check}' value='${check}'>
+                <label for='${check}'>${check}</label>
+            </div>`
 }
 
-function printCheckbox(lista, checkboxContainer){
+function printCheckbox(lista, checkboxContainer) {
     let template = ``
     for (let check of lista) {
         template += plantillaCheckbox(check)
@@ -43,17 +49,51 @@ function printCheckbox(lista, checkboxContainer){
     checkboxContainer.innerHTML = template
 }
 
-printCheckbox(data.events, checkboxContainer)
+let arrayFiltrado = datos.map((item) => item.category)
+// console.log(arrayFiltrado)
+let newArrayFiltrado = [...new Set(arrayFiltrado)]
+// console.log(newArrayFiltrado)
 
-// let arrayCompleto = datos[0].category
+printCheckbox(newArrayFiltrado, checkboxContainer)
 
-// function filtrar (array){
-// for(i = 0; i < array.length; i++){
-//     let datosFiltrados = []
-//     if(i != array[i]){
-//         datosFiltrados.push(i)
-//         console.log(datosFiltrados)
-//     }
-// }
-// }
-// filtrar(arrayCompleto)
+// // hacer filtros para checkbox e imput search
+
+// // Filtro search
+
+inputBusqueda.addEventListener('input', () => {
+    // let busquedaFiltrada = filtrarSearch(datos, inputBusqueda.value)
+    // printCard(busquedaFiltrada, divGeneral)
+    filtroDoble()
+})
+
+function filtrarSearch(array, input) {
+    let filtroSearch = array.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
+    return filtroSearch
+}
+
+// // filtro inputs checkbox
+
+checkboxContainer.addEventListener('change', () => {
+    let checkeados = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(item => item.value)
+    // let inputs = filtrarInput(datos, checkeados)
+    filtroDoble()
+    // printCard (inputs, divGeneral)
+
+})
+
+function filtrarInput (eventos, category){
+    if(category.length == 0){
+        return eventos
+    }
+    return eventos.filter(evento => category.includes(evento.category))
+}
+
+// // filtro doble
+
+function filtroDoble (){
+    let checkeados = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(item => item.value)
+    let filtroSearch = filtrarSearch(datos, inputBusqueda.value)
+    let filtroInput = filtrarInput(filtroSearch, checkeados)
+
+    printCard(filtroInput, divGeneral)
+}
