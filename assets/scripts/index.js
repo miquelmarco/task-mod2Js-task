@@ -35,8 +35,7 @@ printCard(datos, divGeneral)
 
 let checkboxContainer = document.querySelector(`#checkboxContainer`)
 let inputBusqueda = document.querySelector(`#inputBusqueda`)
-// console.log(imputBusqueda)
-// console.log(checkboxContainer)
+
 function plantillaCheckbox(check) {
     return `<div id='checkboxUnit' class="d-flex justify-content-center align-items-center">
                 <input class="ms-1" type="checkbox" id='${check}' value='${check}'>
