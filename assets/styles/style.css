@@ -219,6 +219,10 @@ textarea {
 
 /* stats edit */
 
+caption {
+    caption-side: top;
+}
+
 table {
     box-shadow: rgba(0, 0, 0, 0.541) 20px 19px 38px, rgba(0, 0, 0, 0.856) 20px 15px 12px;
 }
@@ -246,7 +250,8 @@ td {
 }
 
 .tblsubtitle {
-    background-color: rgba(245, 245, 220, 0.384);
+    color: rgb(233, 34, 34);
+    text-shadow: 1px 1px 2px black;
 }
 
 /* details edit */

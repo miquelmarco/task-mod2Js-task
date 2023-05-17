@@ -5,6 +5,7 @@ let divGeneralPs = document.getElementById('cardContainerPe')
 let checkboxContainerPs = document.querySelector(`#checkboxContainerPs`)
 let inputBusquedaPs = document.querySelector(`#inputBusquedaPs`)
 let datosDeAPI
+let pastEvents
 
 // // fetch Api: https://mindhub-xj03.onrender.com/api/amazing
 
@@ -13,11 +14,11 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
     .then(data => {
         datosDeAPI = data
 
-        function filterDataUpcoming(evento){
+        function filterDataPast(evento){
             return evento.date < data.currentDate
         }
-        let upcomingEvents = datosDeAPI.events.filter(filterDataUpcoming)
-        printCard(upcomingEvents, divGeneralPs)
+        pastEvents = datosDeAPI.events.filter(filterDataPast)
+        printCard(pastEvents, divGeneralPs)
 
         let arrayFiltrado = datosDeAPI.events.map((item) => item.category)
         let newArrayFiltrado = [...new Set(arrayFiltrado)]
@@ -25,7 +26,6 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
     })
     .catch(error => console.log(error))
 
-    
     // // eventos de filtrado
     
     inputBusquedaPs.addEventListener('input', () => {
@@ -33,7 +33,6 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
     })
     
     checkboxContainerPs.addEventListener('change', () => {
-        
         filtroDoble()
     })
     

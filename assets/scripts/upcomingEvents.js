@@ -5,6 +5,7 @@ let divGeneralUp = document.getElementById('cardContainerUp')
 let checkboxContainerUp = document.querySelector(`#checkboxContainerUp`)
 let inputBusquedaUp = document.querySelector(`#inputBusquedaUp`)
 let datosDeAPI
+let upcomingEvents
 
 // // fetch Api: https://mindhub-xj03.onrender.com/api/amazing
 
@@ -16,7 +17,7 @@ fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
         function filterDataUpcoming(evento){
             return evento.date > data.currentDate
         }
-        let upcomingEvents = datosDeAPI.events.filter(filterDataUpcoming)
+        upcomingEvents = datosDeAPI.events.filter(filterDataUpcoming)
         printCard(upcomingEvents, divGeneralUp)
 
         let arrayFiltrado = datosDeAPI.events.map((item) => item.category)
