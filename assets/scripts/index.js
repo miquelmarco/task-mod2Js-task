@@ -1,8 +1,35 @@
 
+// // variables
+
 let divGeneral = document.getElementById('cardContainer')
-let datos = data.events
+let checkboxContainer = document.querySelector(`#checkboxContainer`)
+let inputBusqueda = document.querySelector(`#inputBusqueda`)
+let datosDeAPI
 
+// // fetch Api: https://mindhub-xj03.onrender.com/api/amazing
 
+fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
+    .then(response => response.json())
+    .then(data => {
+        datosDeAPI = data
+        printCard(datosDeAPI.events, divGeneral)
+        let arrayFiltrado = datosDeAPI.events.map((item) => item.category)
+        let newArrayFiltrado = [...new Set(arrayFiltrado)]
+        printCheckbox(newArrayFiltrado, checkboxContainer)
+    })
+    .catch(error => console.log(error))
+
+// // eventos de escucha
+
+inputBusqueda.addEventListener('input', () => {
+    filtroDoble()
+})
+
+checkboxContainer.addEventListener('change', () => {
+    filtroDoble()
+})
+
+// // plantillas para imprimir
 
 function plantillaCard(obj) {
     return `<div class="card mt-3 mb-3" style="width: 18rem;">
@@ -18,7 +45,7 @@ function plantillaCard(obj) {
 
 function printCard(list, lugarImpresion) {
     let template = ''
-    if(list == 0){
+    if (list == 0) {
         template = `Without results, not your lucky day!`
     }
     for (let info of list) {
@@ -27,14 +54,7 @@ function printCard(list, lugarImpresion) {
     lugarImpresion.innerHTML = template
 }
 
-printCard(datos, divGeneral)
-
-// // task 3
-
-// // Poner checkbox dinámicos filtrando duplicados
-
-let checkboxContainer = document.querySelector(`#checkboxContainer`)
-let inputBusqueda = document.querySelector(`#inputBusqueda`)
+// // funciones de impresion
 
 function plantillaCheckbox(check) {
     return `<div id='checkboxUnit' class="d-flex justify-content-center align-items-center">
@@ -51,25 +71,6 @@ function printCheckbox(lista, checkboxContainer) {
     checkboxContainer.innerHTML = template
 }
 
-let arrayFiltrado = datos.map((item) => item.category)
-// console.log(arrayFiltrado)
-let newArrayFiltrado = [...new Set(arrayFiltrado)]
-// console.log(newArrayFiltrado)
-
-printCheckbox(newArrayFiltrado, checkboxContainer)
-
-// // hacer filtros para checkbox e imput search
-
-// // eventos de filtrado
-
-inputBusqueda.addEventListener('input', () => {
-    filtroDoble()
-})
-
-checkboxContainer.addEventListener('change', () => {
-    filtroDoble()
-})
-
 // // funciones de filtrado
 
 function filtrarSearch(array, input) {
@@ -77,8 +78,8 @@ function filtrarSearch(array, input) {
     return filtroSearch
 }
 
-function filtrarInput (eventos, category){
-    if(category.length == 0){
+function filtrarInput(eventos, category) {
+    if (category.length == 0) {
         return eventos
     }
     return eventos.filter(evento => category.includes(evento.category))
@@ -86,9 +87,9 @@ function filtrarInput (eventos, category){
 
 // // filtro doble
 
-function filtroDoble (){
+function filtroDoble() {
     let checkeados = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(item => item.value)
-    let filtroSearch = filtrarSearch(datos, inputBusqueda.value)
+    let filtroSearch = filtrarSearch(datosDeAPI.events, inputBusqueda.value)
     let filtroInput = filtrarInput(filtroSearch, checkeados)
 
     printCard(filtroInput, divGeneral)

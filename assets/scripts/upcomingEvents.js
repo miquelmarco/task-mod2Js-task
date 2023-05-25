@@ -1,5 +1,42 @@
+
+// // variables
+
 let divGeneralUp = document.getElementById('cardContainerUp')
-let datos = data.events
+let checkboxContainerUp = document.querySelector(`#checkboxContainerUp`)
+let inputBusquedaUp = document.querySelector(`#inputBusquedaUp`)
+let datosDeAPI
+let upcomingEvents
+
+// // fetch Api: https://mindhub-xj03.onrender.com/api/amazing
+
+fetch(`https://mindhub-xj03.onrender.com/api/amazing`)
+    .then(response => response.json())
+    .then(data => {
+        datosDeAPI = data
+
+        function filterDataUpcoming(evento){
+            return evento.date > data.currentDate
+        }
+        upcomingEvents = datosDeAPI.events.filter(filterDataUpcoming)
+        printCard(upcomingEvents, divGeneralUp)
+
+        let arrayFiltrado = datosDeAPI.events.map((item) => item.category)
+        let newArrayFiltrado = [...new Set(arrayFiltrado)]
+        printCheckbox(newArrayFiltrado, checkboxContainerUp)
+    })
+    .catch(error => console.log(error))
+
+// // eventos de escucha
+
+inputBusquedaUp.addEventListener('input', () => {
+    filtroDoble()
+})
+
+checkboxContainerUp.addEventListener('change', () => {
+    filtroDoble()
+})
+
+// // plantillas para imprimir
 
 function plantillaCard(obj){
     return `<div class="card mt-3 mb-3" style="width: 18rem;">
@@ -13,6 +50,15 @@ function plantillaCard(obj){
             </div> `
 }
 
+function plantillaCheckbox(check){
+    return `<div class="d-flex justify-content-center align-items-center">
+    <input class="ms-1" type="checkbox" id='${check}' value='${check}'>
+    <label for='${check}'>${check}</label>
+    </div>`
+}
+
+// // funciones de impresión
+
 function printCard(list, lugarImpresion){
     let template = ''
     if(list == 0){
@@ -24,26 +70,6 @@ function printCard(list, lugarImpresion){
     lugarImpresion.innerHTML = template
 }
 
-function filterDataUpcoming(evento){
-    return evento.date > data.currentDate
-}
-
-const upcomingEvents = data.events.filter(filterDataUpcoming);
-
-printCard(upcomingEvents, divGeneralUp)
-
-// // impresión checkbox dinámico
-
-let checkboxContainerUp = document.querySelector(`#checkboxContainerUp`)
-let inputBusquedaUp = document.querySelector(`#inputBusquedaUp`)
-
-function plantillaCheckbox(check){
-    return `<div class="d-flex justify-content-center align-items-center">
-                <input class="ms-1" type="checkbox" id='${check}' value='${check}'>
-                <label for='${check}'>${check}</label>
-            </div>`
-}
-
 function printCheckbox(lista, checkboxContainerUp){
     let template = ``
     for (let check of lista) {
@@ -52,24 +78,7 @@ function printCheckbox(lista, checkboxContainerUp){
     checkboxContainerUp.innerHTML = template
 }
 
-let arrayFiltradoUp = datos.map((item) => item.category)
-let newArrayFiltradoUp = [...new Set(arrayFiltradoUp)]
-
-printCheckbox(newArrayFiltradoUp, checkboxContainerUp)
-
-// // hacer filtros para checkbox e imput search
-
-// // eventos del filtrado
-
-inputBusquedaUp.addEventListener('input', () => {
-    filtroDoble()
-})
-
-checkboxContainerUp.addEventListener('change', () => {
-    filtroDoble()
-})
-
-// // funciones del filtrado
+// // funciones de filtrado
 
 function filtrarSearch(array, input) {
     let filtroSearchPs = array.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
